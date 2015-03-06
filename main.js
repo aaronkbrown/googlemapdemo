@@ -42,8 +42,8 @@ function createMarker(place, placeId) {
     map: map,
     position: place.geometry.location
   });
-
-/**  $.get("https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeId + "&key=OurApiKey", function(data){
+  var placeIdURL = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeId + "&key=OurApiKey";
+/**  $.get(placeIdURL, function(data){
     placeAddress = data.results.formatted_address;
     placeRating = data.results.rating;
   });
