@@ -36,12 +36,18 @@ requesting a JSON file from Google for each marker using the placeId in order to
 more information about each location beyond just the name */
 function createMarker(place, placeId) {
   var placeLoc = place.geometry.location;
+  var placeAddress;
+  var placeRating;
   var marker = new google.maps.Marker({
     map: map,
     position: place.geometry.location
   });
 
-
+/**  $.get("https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeId + "&key=OurApiKey", function(data){
+    placeAddress = data.results.formatted_address;
+    placeRating = data.results.rating;
+  });
+*/
 
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(place.name);
