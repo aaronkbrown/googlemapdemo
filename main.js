@@ -25,25 +25,30 @@ function initialize() {
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
-      createMarker(results[i]);
+      createMarker(results[i], results[i].place_id);
     }
   }
 }
 
 
-
-function createMarker(place) {
+/** We will need an application API key from Google for this to work as we will be
+requesting a JSON file from Google for each marker using the placeId in order to get
+more information about each location beyond just the name */
+function createMarker(place, placeId) {
   var placeLoc = place.geometry.location;
   var marker = new google.maps.Marker({
     map: map,
     position: place.geometry.location
   });
 
+
+
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(place.name);
     infowindow.open(map, this);
   });
 }
+
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
