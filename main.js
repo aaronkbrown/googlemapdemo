@@ -50,7 +50,7 @@ function createMarker(place, placeId) {
 */
 
   google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(place.name);
+    infowindow.setContent('<div class="locBody"><div class="locName">' + place.name + '</div><div class="locInfo">This is where info goes</div></div>');
     infowindow.open(map, this);
   });
 }
